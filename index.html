@@ -254,5 +254,16 @@
 
 <footer class="site-footer">提案用サンプル（架空のクリニック）／写真はAI生成のイメージで、実際の制作では支給写真に差し替えます。</footer>
 
+<script>
+  // ?figma：html.to.design で取り込むとき用に、縦書きを1文字ずつの列に置き換える
+  if (new URLSearchParams(location.search).has('figma')) {
+    document.documentElement.classList.add('is-figma');
+    const vert = { '、': '︑', '。': '︒' };
+    document.querySelectorAll('.hero-copy > *').forEach((el) => {
+      const lines = el.innerHTML.split(/<br\s*\/?>/).map((l) => l.trim()).filter(Boolean);
+      el.innerHTML = lines.map((l) => '<span class="vcol">' + [...l].map((c) => vert[c] || c).join('<br>') + '</span>').join('');
+    });
+  }
+</script>
 </body>
 </html>

@@ -295,3 +295,8 @@ a:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; }
   .final-actions { flex-direction: row; }
   .final-actions .btn { min-width: 280px; }
 }
+
+/* Figma 取り込み用（?figma）：Figma は縦書きが無いので、1文字ずつ改行した横書きの列に置き換える */
+.is-figma .hero-copy { writing-mode: horizontal-tb; flex-direction: row-reverse; align-items: flex-start; }
+.is-figma .hero-copy > * { display: flex; flex-direction: row-reverse; gap: 0.75em; writing-mode: horizontal-tb; }
+.is-figma .vcol { display: block; width: 1em; text-align: center; line-height: 1.2; letter-spacing: 0; }
